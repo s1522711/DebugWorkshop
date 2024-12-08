@@ -12,7 +12,7 @@ char* string_copy(char* dest, unsigned int destsize, char* src)
 void part1()
 {
 	char password[] = "secret";
-	char dest[12];
+	char dest[13]; // bug: forgot the space for the null terminator - 12 characters + null terminator
 	char src[] = "hello world!";
 
 	string_copy(dest, 12, src);
