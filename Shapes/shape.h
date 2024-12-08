@@ -9,7 +9,7 @@ private:
 
 public:
 	Shape();
-	virtual float get_area() const;
+	virtual float get_area(bool has_depth = false) const; // didnt use the same signature in the previous example
 
 };
 
