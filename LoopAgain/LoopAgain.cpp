@@ -2,7 +2,7 @@
 
 int main()
 {
-	int size = 0; // but: this was set to unsigned int, but it should be int
+	int size = 0; // bug: this was set to unsigned int, but it should be int
 
 	int t1 = 0, t2 = 1;
 
