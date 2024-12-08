@@ -16,8 +16,8 @@ Point::Point(int x, int y)
 
 Point::Point(const Point& other)
 {
-	delete _coord;
-	_coord = other._coord;
+	// do hard copy using = operator
+	*this = other;
 }
 
 Point::~Point()
@@ -27,9 +27,11 @@ Point::~Point()
 
 Point& Point::operator=(const Point& other)
 {
+	if (this == &other) // self assignment - do nothing
+		return *this;
 	delete _coord;
 	_coord = new int[2];
-	memcpy(_coord, other._coord, 2);
+	memcpy(_coord, other._coord, 8); // 2 * sizeof(int) = 8 - they forgot to set it correctrly
 	return *this;
 }
 
