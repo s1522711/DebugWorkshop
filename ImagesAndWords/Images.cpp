@@ -8,8 +8,8 @@
 struct ImageHeader
 {
 	char signature[4];
-	uint16_t width;
-	uint16_t height;
+	int width; // error was the use of uint16_t instead of int here because of the size of the image in the test
+	int height;
 	unsigned short mode;
 };
 
@@ -57,7 +57,7 @@ Image *ReadImage(const char* filename)
 	for (int i = 0; i < img->header.height; i++)
 	{
 		is.read(tmpbuff, img->header.width);
-		memcpy(img->data + (i * img->header.width), tmpbuff, img->header.width);
+		memcpy(img->data + (i * img->header.width), tmpbuff, img->header.width); // crashes here on the second iteration
 	}
 	return img;
 }
@@ -93,7 +93,7 @@ Image *GenerateDummyImage(uint16_t width, uint16_t height)
 
 int main()
 {
-	Image *im = ReadImage("img1.magi");
+	Image *im = ReadImage("img2.magi");
 	FreeImage(im);
 
 	return 0;
